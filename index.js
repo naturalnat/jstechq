@@ -20,7 +20,7 @@ function validate(data) {
   function search(data) {
     let table = '<table><tr><th>city</th><th>state</th></tr>';
 
-    fetch(`https://jsonmock.hackerrank.com/api/cities/?city=${data}`)
+    fetch(`/?city=${data}`)
       .then((res) => res.json())
       .then((resjson) => {
         for(let i = 0; i < resjson.data.length; i++) {
