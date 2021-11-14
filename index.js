@@ -10,13 +10,15 @@ document.getElementById("button").addEventListener("click", function () {
 
 function validate(data) {
     const lettersOnly = /^[A-Za-z]+$/;
-    if (data.match(lettersOnly))
-        // search();
-        console.log("valid entry")
-    else
-        alert ("invalid input. please use a-z characters only")
-}
-
-function search(){
-    
-}
+    if (data.match(lettersOnly)) {
+      search(data);
+    } else {
+      alert("invalid input. please use a-z characters only");
+    }
+  }
+  
+  function search(data) {
+    fetch(`.../?city=${data}`)
+      .then((res) => res.json())
+      .then((resjson) => console.log(resjson));
+  }
