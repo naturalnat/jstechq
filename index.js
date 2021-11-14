@@ -18,7 +18,17 @@ function validate(data) {
   }
   
   function search(data) {
-    fetch(`.../?city=${data}`)
+    let table = '<table><tr><th>city</th><th>state</th></tr>';
+
+    fetch(`https://jsonmock.hackerrank.com/api/cities/?city=${data}`)
       .then((res) => res.json())
-      .then((resjson) => console.log(resjson));
+      .then((resjson) => {
+        for(let i = 0; i < resjson.data.length; i++) {
+          table += '<tr><td>' + resjson.data[i]['city'] + '</td>';
+          table += '<td>' + resjson.data[i]['state'] + '</td></tr>';
+        }
+        table += '</table>';
+        document.getElementById('table').innerHTML = table;
+      });    
   }
+
